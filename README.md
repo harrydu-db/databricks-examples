@@ -1,8 +1,9 @@
 # Examples for Databricks Project
 
+-  [Ingestion from S3](./ingest-s3)
+
 Todo: 
 - Ingestion from Kafka
-- Ingestion from S3 using AutoLoader
 - Ingestion from Salesforce using Lakeflow connect
 - Ingestion from Google Drive
 - Ingestion from REST API
