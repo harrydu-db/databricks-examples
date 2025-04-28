@@ -27,3 +27,7 @@ df = (spark.readStream
 # COMMAND ----------
 
 display(df)
+
+# COMMAND ----------
+
+display(df.select('_metadata.file_path').distinct())
