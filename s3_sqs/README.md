@@ -1,10 +1,29 @@
 # S3 to SQS Notification Setup
 
+## Notice
+This code is provided as-is without any warranties or guarantees. Use at your own risk. The author is not responsible for any damages or issues that may arise from using this code.
+
 This Terraform configuration sets up an SQS queue that receives notifications when new files are added to a specific S3 bucket prefix.
 
 ## Prerequisites
 
-1. AWS CLI configured with appropriate credentials
+1. AWS CLI configured with appropriate credentials:
+   ```bash
+   # Install AWS CLI if not already installed
+   # For macOS:
+   brew install awscli
+   
+   # Configure AWS CLI
+   aws configure
+   # Enter your AWS Access Key ID
+   # Enter your AWS Secret Access Key
+   # Enter default region (us-west-2)
+   # Enter default output format (json)
+   
+   # Verify configuration
+   aws configure list
+   ```
+
 2. Terraform installed
 3. Access to the S3 bucket `harrydu-sample-data2`
 4. Python 3.x installed
@@ -66,6 +85,22 @@ Features:
 - Progress information for each upload
 - Error handling for invalid paths
 
+### S3 Management
+
+#### List Files in S3
+```bash
+aws s3 ls s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive
+```
+
+#### Cleanup S3 Folder
+```bash
+# Delete all files in the folder
+aws s3 rm s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive
+
+# Delete specific file types (e.g., .parquet files)
+aws s3 rm s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive --exclude "*" --include "*.parquet"
+```
+
 ### Databricks Auto Loader Notebook
 
 The `notebooks/autoloader_sqs.py` notebook demonstrates how to use Databricks Auto Loader with SQS notifications to process files as they are uploaded to S3.
@@ -118,6 +153,22 @@ You can customize the configuration by modifying the following variables in `var
 ## Cleanup
 
 To remove all created resources:
+
+1. Remove Terraform resources:
 ```bash
 terraform destroy
+```
+
+2. Cleanup S3 folder:
+```bash
+# Delete all files in the folder
+aws s3 rm s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive
+
+# Or delete specific file types (e.g., .parquet files)
+aws s3 rm s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive --exclude "*" --include "*.parquet"
+```
+
+Note: Make sure to verify the files before deletion using:
+```bash
+aws s3 ls s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive
 ``` 
