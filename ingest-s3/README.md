@@ -54,4 +54,8 @@ Steps:
 - `transformations`: The DLT code for the pipeline
 - `1. Spark Example`: The notebook for loading the S3 data in spark
 
+## Extra
 
+You can also create external volume in your Unity Catalog. Follow the instructure in [this document](https://docs.databricks.com/aws/en/connect/unity-catalog/cloud-storage/storage-credentials) to configure the external volume. 
+
+If you use external volume, you don't need to use the S3 access key and access secret in code. 

@@ -172,3 +172,9 @@ Note: Make sure to verify the files before deletion using:
 ```bash
 aws s3 ls s3://harrydu-sample-data2/lakehouse-iot-turbine/incoming_data/ --recursive
 ``` 
+
+
+## References
+- [Ingestion from S3 Example](../ingest-s3/)
+- [What is Auto Loader file notification mode?](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/file-notification-mode)
+- [Required Permission for configuration file notification for S3](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/file-notification-mode#required-permissions-for-configuring-file-notification-for-amazon-s3)
