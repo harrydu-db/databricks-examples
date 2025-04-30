@@ -7,6 +7,11 @@ import argparse
 import time
 from pathlib import Path
 
+# S3 configuration
+# TODO: change to your own bucket name and prefix
+bucket_name = 'harrydu-sample-data2'
+s3_prefix = 'lakehouse-iot-turbine/incoming_data/'
+
 def upload_file_to_s3(file_path, bucket_name, s3_prefix):
     """
     Upload a file to S3 bucket with specified prefix
@@ -65,10 +70,6 @@ def main():
     parser.add_argument('path', help='Path to the file or directory to upload')
     parser.add_argument('--wait-time', type=int, default=3, help='Wait time in seconds between uploads (for directories)')
     args = parser.parse_args()
-    
-    # S3 configuration
-    bucket_name = 'harrydu-sample-data2'
-    s3_prefix = 'lakehouse-iot-turbine/incoming_data/'
     
     # Check if path exists
     if not os.path.exists(args.path):
