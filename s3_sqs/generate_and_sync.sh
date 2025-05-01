@@ -51,8 +51,8 @@ if [ -z "$NUMBER_OF_FILES" ]; then
     current_id=$START_ID
     while true; do
         generate_and_sync_single $current_id
-        echo "Waiting 3 seconds before next file..."
-        sleep 3
+        echo "Waiting 1 seconds before next file..."
+        sleep 1
         current_id=$((current_id + 1))
     done
 else
